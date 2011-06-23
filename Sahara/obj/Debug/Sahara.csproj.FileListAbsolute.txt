@@ -1,0 +1,11 @@
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Sahara.dll
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Sahara.pdb
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Autofac.Configuration.dll
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Autofac.dll
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Moq.dll
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Autofac.xml
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Moq.pdb
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\bin\Debug\Moq.xml
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\obj\Debug\ResolveAssemblyReference.cache
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\obj\Debug\Sahara.dll
+c:\users\mibarra\documents\visual studio 2010\Projects\Sahara\Sahara\obj\Debug\Sahara.pdb
