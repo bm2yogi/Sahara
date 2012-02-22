@@ -64,5 +64,11 @@ namespace Sahara
             Assert.IsFalse(actual);
             return actual;
         }
+
+        public static T ShouldBeOfType<T>(this T actual)
+        {
+            Assert.IsInstanceOf(typeof(T), actual);
+            return actual;
+        }
     }
 }

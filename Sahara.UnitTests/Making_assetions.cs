@@ -21,6 +21,15 @@ namespace Sahara.UnitTests
             3.ShouldBeAtMost(3);
             true.IsTrue();
             false.IsFalse();
+            "Monkey".ShouldBeOfType<string>();
+            1.ShouldBeOfType<int>();
+        }
+
+        [Test]
+        public void Setting_up_conditions_should_be_easy()
+        {
+            //Some nice syntax for G/W/T...
+            
         }
         
     }
