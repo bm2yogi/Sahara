@@ -19,7 +19,8 @@ namespace Sahara.UnitTests
             3.ShouldEqual(3);
             3.ShouldBeAtLeast(3);
             3.ShouldBeAtMost(3);
-
+            true.IsTrue();
+            false.IsFalse();
         }
         
     }

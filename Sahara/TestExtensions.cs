@@ -52,5 +52,17 @@ namespace Sahara
             Assert.LessOrEqual(actual, expected);
             return actual;
         }
+
+        public static bool IsTrue(this bool actual)
+        {
+            Assert.IsTrue(actual);
+            return actual;
+        }
+
+        public static bool IsFalse(this bool actual)
+        {
+            Assert.IsFalse(actual);
+            return actual;
+        }
     }
 }
