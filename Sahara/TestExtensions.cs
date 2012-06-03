@@ -53,13 +53,13 @@ namespace Sahara
             return actual;
         }
 
-        public static bool IsTrue(this bool actual)
+        public static bool ShouldBeTrue(this bool actual)
         {
             Assert.IsTrue(actual);
             return actual;
         }
 
-        public static bool IsFalse(this bool actual)
+        public static bool ShouleBeFalse(this bool actual)
         {
             Assert.IsFalse(actual);
             return actual;

@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace Sahara.UnitTests
 {
     [TestFixture]
-    public class Making_assetions
+    public class Making_Assertions
     {
         [Test]
         public void Assertions_should_check_values()
@@ -19,8 +19,8 @@ namespace Sahara.UnitTests
             3.ShouldEqual(3);
             3.ShouldBeAtLeast(3);
             3.ShouldBeAtMost(3);
-            true.IsTrue();
-            false.IsFalse();
+            true.ShouldBeTrue();
+            false.ShouleBeFalse();
             "Monkey".ShouldBeOfType<string>();
             1.ShouldBeOfType<int>();
         }
