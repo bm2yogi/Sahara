@@ -1,5 +1,11 @@
 *.user
+
 *.suo
+
 bin
+
 obj
+
 _Resharper*
+*dotcover*
+*ncrunch*

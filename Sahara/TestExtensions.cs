@@ -53,13 +53,18 @@ namespace Sahara
             return actual;
         }
 
+        public static void ShouldContain(this string actual, string match)
+        {
+            Assert.IsTrue(actual.Contains(match));
+        }
+
         public static bool ShouldBeTrue(this bool actual)
         {
             Assert.IsTrue(actual);
             return actual;
         }
 
-        public static bool ShouleBeFalse(this bool actual)
+        public static bool ShouldBeFalse(this bool actual)
         {
             Assert.IsFalse(actual);
             return actual;
@@ -67,7 +72,7 @@ namespace Sahara
 
         public static T ShouldBeOfType<T>(this T actual)
         {
-            Assert.IsInstanceOf(typeof(T), actual);
+            Assert.IsInstanceOf<T>(actual);
             return actual;
         }
     }

@@ -5,6 +5,12 @@ namespace Sahara.UnitTests
     [TestFixture]
     public class Making_Assertions
     {
+        interface IInterface1 { }
+        class BaseClass { }
+        class DerivedClass : BaseClass { }
+        class InterfaceImpl : IInterface1 { }
+        class DerivedImpl : BaseClass, IInterface1 { }
+
         [Test]
         public void Assertions_should_check_values()
         {
@@ -20,17 +26,22 @@ namespace Sahara.UnitTests
             3.ShouldBeAtLeast(3);
             3.ShouldBeAtMost(3);
             true.ShouldBeTrue();
-            false.ShouleBeFalse();
+            false.ShouldBeFalse();
             "Monkey".ShouldBeOfType<string>();
-            1.ShouldBeOfType<int>();
+
+            new DerivedClass().ShouldBeOfType<BaseClass>();
+            new DerivedClass().ShouldBeOfType<DerivedClass>();
+            new InterfaceImpl().ShouldBeOfType<IInterface1>();
+            new DerivedImpl().ShouldBeOfType<BaseClass>();
+            new DerivedImpl().ShouldBeOfType<IInterface1>();
         }
 
         [Test]
         public void Setting_up_conditions_should_be_easy()
         {
             //Some nice syntax for G/W/T...
-            
+
         }
-        
+
     }
 }
