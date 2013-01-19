@@ -28,6 +28,9 @@ namespace Sahara.UnitTests
             true.ShouldBeTrue();
             false.ShouldBeFalse();
             "Monkey".ShouldBeOfType<string>();
+            new[] { "a", "b", "c", "d" }.ShouldNotContain("e");
+            new[] { "a", "b", "c", "d" }.ShouldContain("c");
+            new[] { "a", "b", "c", "d", "c", "c" }.ShouldContain("c", 3);
 
             new DerivedClass().ShouldBeOfType<BaseClass>();
             new DerivedClass().ShouldBeOfType<DerivedClass>();
@@ -35,13 +38,5 @@ namespace Sahara.UnitTests
             new DerivedImpl().ShouldBeOfType<BaseClass>();
             new DerivedImpl().ShouldBeOfType<IInterface1>();
         }
-
-        [Test]
-        public void Setting_up_conditions_should_be_easy()
-        {
-            //Some nice syntax for G/W/T...
-
-        }
-
     }
 }

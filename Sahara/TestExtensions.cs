@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Sahara
@@ -56,6 +58,21 @@ namespace Sahara
         public static void ShouldContain(this string actual, string match)
         {
             Assert.IsTrue(actual.Contains(match));
+        }
+
+        public static void ShouldContain<T>(this IEnumerable<T> actual, T match)
+        {
+            Assert.IsTrue(actual.Any(x => x.Equals(match)));
+        }
+
+        public static void ShouldContain<T>(this IEnumerable<T> actual, T match, int count)
+        {
+            Assert.IsTrue(actual.Count(x => x.Equals(match)) == count);
+        }
+
+        public static void ShouldNotContain<T>(this IEnumerable<T> actual, T match)
+        {
+            Assert.IsFalse(actual.Any(x => x.Equals(match)));
         }
 
         public static bool ShouldBeTrue(this bool actual)
