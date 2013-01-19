@@ -65,6 +65,11 @@ namespace Sahara
             Assert.IsTrue(actual.Any(x => x.Equals(match)));
         }
 
+        public static void ShouldContain<T>(this IEnumerable<T> actual, Func<T,bool> predicate)
+        {
+            Assert.IsTrue(actual.Any(predicate));
+        }
+
         public static void ShouldContain<T>(this IEnumerable<T> actual, T match, int count)
         {
             Assert.IsTrue(actual.Count(x => x.Equals(match)) == count);
@@ -73,6 +78,11 @@ namespace Sahara
         public static void ShouldNotContain<T>(this IEnumerable<T> actual, T match)
         {
             Assert.IsFalse(actual.Any(x => x.Equals(match)));
+        }
+
+        public static void ShouldNotContain<T>(this IEnumerable<T> actual, Func<T, bool> predicate)
+        {
+            Assert.IsFalse(actual.Any(predicate));
         }
 
         public static bool ShouldBeTrue(this bool actual)

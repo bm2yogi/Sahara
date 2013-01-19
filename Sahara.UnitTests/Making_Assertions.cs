@@ -11,6 +11,16 @@ namespace Sahara.UnitTests
         class InterfaceImpl : IInterface1 { }
         class DerivedImpl : BaseClass, IInterface1 { }
 
+        class Foo
+        {
+            public Foo(string value)
+            {
+                Value = value;
+            }
+
+            public string Value { get; set; }
+        }
+
         [Test]
         public void Assertions_should_check_values()
         {
@@ -31,6 +41,9 @@ namespace Sahara.UnitTests
             new[] { "a", "b", "c", "d" }.ShouldNotContain("e");
             new[] { "a", "b", "c", "d" }.ShouldContain("c");
             new[] { "a", "b", "c", "d", "c", "c" }.ShouldContain("c", 3);
+
+            new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldContain(x => x.Value == "a");
+            new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldNotContain(x => x.Value == "e");
 
             new DerivedClass().ShouldBeOfType<BaseClass>();
             new DerivedClass().ShouldBeOfType<DerivedClass>();
