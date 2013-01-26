@@ -26,6 +26,10 @@ namespace Sahara.UnitTests
         {
             (new object() as string).ShouldBeNull();
             "Monkey".ShouldNotBeNull();
+            "Monkey".ShouldNotBeEmpty();
+            "".ShouldBeEmpty();
+            new[] {1}.ShouldNotBeEmpty();
+            new int[] {}.ShouldBeEmpty();
             "Monkey".ShouldEqual("Monkey");
             "Monkey".ShouldNotEqual("Ape");
             3.ShouldBeGreaterThan(2);

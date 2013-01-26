@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -16,6 +17,30 @@ namespace Sahara
         public static T ShouldNotBeNull<T>(this T actual)
         {
             Assert.IsNotNull(actual);
+            return actual;
+        }
+
+        public static string ShouldBeEmpty(this string actual)
+        {
+            Assert.IsEmpty(actual);
+            return actual;
+        }
+
+        public static string ShouldNotBeEmpty(this string actual)
+        {
+            Assert.IsNotEmpty(actual);
+            return actual;
+        }
+
+        public static T ShouldBeEmpty<T>(this T actual) where T : IEnumerable
+        {
+            Assert.IsEmpty(actual);
+            return actual;
+        }
+
+        public static T ShouldNotBeEmpty<T>(this T actual) where T : IEnumerable
+        {
+            Assert.IsNotEmpty(actual);
             return actual;
         }
 
