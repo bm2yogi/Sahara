@@ -26,12 +26,16 @@ namespace Sahara.UnitTests
         {
             (new object() as string).ShouldBeNull();
             "Monkey".ShouldNotBeNull();
-            "Monkey".ShouldNotBeEmpty();
+
             "".ShouldBeEmpty();
-            new[] {1}.ShouldNotBeEmpty();
+            "Monkey".ShouldNotBeEmpty();
+
             new int[] {}.ShouldBeEmpty();
+            new[] {1}.ShouldNotBeEmpty();
+
             "Monkey".ShouldEqual("Monkey");
             "Monkey".ShouldNotEqual("Ape");
+
             3.ShouldBeGreaterThan(2);
             3.ShouldBeAtLeast(2);
             2.ShouldBeLessThan(3);
@@ -39,9 +43,10 @@ namespace Sahara.UnitTests
             3.ShouldEqual(3);
             3.ShouldBeAtLeast(3);
             3.ShouldBeAtMost(3);
+
             true.ShouldBeTrue();
             false.ShouldBeFalse();
-            "Monkey".ShouldBeOfType<string>();
+            
             new[] { "a", "b", "c", "d" }.ShouldNotContain("e");
             new[] { "a", "b", "c", "d" }.ShouldContain("c");
             new[] { "a", "b", "c", "d", "c", "c" }.ShouldContain("c", 3);
@@ -49,6 +54,7 @@ namespace Sahara.UnitTests
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldContain(x => x.Value == "a");
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldNotContain(x => x.Value == "e");
 
+            "Monkey".ShouldBeOfType<string>();
             new DerivedClass().ShouldBeOfType<BaseClass>();
             new DerivedClass().ShouldBeOfType<DerivedClass>();
             new InterfaceImpl().ShouldBeOfType<IInterface1>();
