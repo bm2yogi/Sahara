@@ -56,27 +56,27 @@ namespace Sahara
             return actual;
         }
 
-        public static IComparable ShouldBeGreaterThan(this IComparable actual, IComparable expected)
+        public static IComparable<T> ShouldBeGreaterThan<T>(this IComparable<T> actual, T expected)
         {
-            Assert.Greater(actual, expected);
+            Assert.Greater(actual.CompareTo(expected),0);
             return actual;
         }
 
-        public static IComparable ShouldBeAtLeast(this IComparable actual, IComparable expected)
+        public static IComparable<T> ShouldBeAtLeast<T>(this IComparable<T> actual, T expected)
         {
-            Assert.GreaterOrEqual(actual, expected);
+            Assert.GreaterOrEqual(actual.CompareTo(expected), 0);
             return actual;
         }
 
-        public static IComparable ShouldBeLessThan(this IComparable actual, IComparable expected)
+        public static IComparable<T> ShouldBeLessThan<T>(this IComparable<T> actual, T expected)
         {
-            Assert.Less(actual, expected);
+            Assert.Less(actual.CompareTo(expected), 0);
             return actual;
         }
 
-        public static IComparable ShouldBeAtMost(this IComparable actual, IComparable expected)
+        public static IComparable<T> ShouldBeAtMost<T>(this IComparable<T> actual, T expected)
         {
-            Assert.LessOrEqual(actual, expected);
+            Assert.LessOrEqual(actual.CompareTo(expected),0);
             return actual;
         }
 

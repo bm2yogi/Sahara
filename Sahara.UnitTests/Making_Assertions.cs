@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Sahara.UnitTests
@@ -11,7 +12,7 @@ namespace Sahara.UnitTests
         class InterfaceImpl : IInterface1 { }
         class DerivedImpl : BaseClass, IInterface1 { }
 
-        class Foo
+        class Foo: IComparable<Foo>
         {
             public Foo(string value)
             {
@@ -19,6 +20,11 @@ namespace Sahara.UnitTests
             }
 
             public string Value { get; set; }
+
+            public int CompareTo(Foo other)
+            {
+                return this.Value.CompareTo(other.Value);
+            }
         }
 
         [Test]
@@ -34,7 +40,22 @@ namespace Sahara.UnitTests
             new[] {1}.ShouldNotBeEmpty();
 
             "Monkey".ShouldEqual("Monkey");
+            "Monkey".ShouldBeAtLeast("Monkey");
+            "Monkey".ShouldBeAtMost("Monkey");
             "Monkey".ShouldNotEqual("Ape");
+            "Monkey".ShouldBeGreaterThan("Ape");
+            "Ape".ShouldBeLessThan("Monkey");
+
+            var apeFoo = new Foo("Ape");
+            var monkeyFoo = new Foo("Monkey");
+
+            monkeyFoo.ShouldBeGreaterThan(apeFoo);
+            monkeyFoo.ShouldBeAtLeast(apeFoo);
+            apeFoo.ShouldBeLessThan(monkeyFoo);
+            apeFoo.ShouldBeAtMost(monkeyFoo);
+            monkeyFoo.ShouldEqual(monkeyFoo);
+            monkeyFoo.ShouldBeAtLeast(monkeyFoo);
+            monkeyFoo.ShouldBeAtMost(monkeyFoo);
 
             3.ShouldBeGreaterThan(2);
             3.ShouldBeAtLeast(2);
