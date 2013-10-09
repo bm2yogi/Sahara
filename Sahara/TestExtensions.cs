@@ -20,6 +20,18 @@ namespace Sahara
             return actual;
         }
 
+        public static string ShouldStartWith(this string actual, string expected)
+        {
+            Assert.IsTrue(actual.StartsWith(expected));
+            return actual;
+        }
+
+        public static string ShouldEndWith(this string actual, string expected)
+        {
+            Assert.IsTrue(actual.EndsWith(expected));
+            return actual;
+        }
+
         public static string ShouldBeEmpty(this string actual)
         {
             Assert.IsEmpty(actual);

@@ -46,6 +46,10 @@ namespace Sahara.UnitTests
             "Monkey".ShouldBeGreaterThan("Ape");
             "Ape".ShouldBeLessThan("Monkey");
 
+            "MonkeyFist".ShouldStartWith("Monkey");
+            "MonkeyFist".ShouldEndWith("Fist");
+            "MonkeyFist".ShouldContain("key");
+
             var apeFoo = new Foo("Ape");
             var monkeyFoo = new Foo("Monkey");
 
