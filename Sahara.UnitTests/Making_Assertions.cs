@@ -12,7 +12,7 @@ namespace Sahara.UnitTests
         class InterfaceImpl : IInterface1 { }
         class DerivedImpl : BaseClass, IInterface1 { }
 
-        class Foo: IComparable<Foo>
+        class Foo : IComparable<Foo>
         {
             public Foo(string value)
             {
@@ -36,8 +36,8 @@ namespace Sahara.UnitTests
             "".ShouldBeEmpty();
             "Monkey".ShouldNotBeEmpty();
 
-            new int[] {}.ShouldBeEmpty();
-            new[] {1}.ShouldNotBeEmpty();
+            new int[] { }.ShouldBeEmpty();
+            new[] { 1 }.ShouldNotBeEmpty();
 
             "Monkey".ShouldEqual("Monkey");
             "Monkey".ShouldBeAtLeast("Monkey");
@@ -71,10 +71,15 @@ namespace Sahara.UnitTests
 
             true.ShouldBeTrue();
             false.ShouldBeFalse();
-            
+
             new[] { "a", "b", "c", "d" }.ShouldNotContain("e");
             new[] { "a", "b", "c", "d" }.ShouldContain("c");
             new[] { "a", "b", "c", "d", "c", "c" }.ShouldContain("c", 3);
+
+            new[] { 1, 2, 3, 4 }.ShouldEqual(new[] { 1, 2, 3, 4 });
+            new[] { 1, 2, 3, 4 }.ShouldEqualSet(new[] { 1, 2, 4, 3 });
+            new[] { 1, 2, 3, 4 }.ShouldBeASuperSetOf(new[] { 1, 4, 3 });
+            new[] { 1, 2, 3, 4 }.ShouldBeASubSetOf(new[] { 1, 4, 5, 2, 3 });
 
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldContain(x => x.Value == "a");
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldNotContain(x => x.Value == "e");

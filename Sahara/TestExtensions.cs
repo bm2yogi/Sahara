@@ -62,6 +62,37 @@ namespace Sahara
             return actual;
         }
 
+        public static IEnumerable<T> ShouldEqualSet<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
+        {
+            var a = actual.OrderBy(v => v).ToArray();
+            var e = expected.OrderBy(v => v).ToArray();
+            a.Count().ShouldEqual(e.Count());
+
+            for (var i = 0; i < a.Count(); i++)
+            {
+                a[i].ShouldEqual(e[i]);
+            }
+
+            return actual;
+        }
+
+        public static IEnumerable<T> ShouldBeASuperSetOf<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
+        {
+            var a = actual.ToArray();
+            expected.ShouldBeASubSetOf(a);
+            return a;
+        }
+
+        public static IEnumerable<T> ShouldBeASubSetOf<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
+        {
+            var a = actual.ToArray();
+            var e = expected.ToArray();
+
+            a.Length.ShouldBeLessThan(e.Length);
+            a.ToList().ForEach(ex => e.ShouldContain(ex));
+            return a;
+        }
+
         public static T ShouldNotEqual<T>(this T actual, T expected)
         {
             Assert.AreNotEqual(expected, actual);
