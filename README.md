@@ -39,4 +39,5 @@ Writing automated unit tests for classes that are tightly coupled to dependent c
 
 Sahara's auto-mocking feature encourages you to take advantage of constructor injection (using interface types) to declare your dependencies, so that they can be mocked and you can test (verify) your classes' behaviors in isolation, without the yak-shaving test setup that usually comes with deep inheritance chains and tightly coupled dependencies.
 
-More to come on this later...
+More to come on this later, but in the meantime check out the test project to see how it works...
+
