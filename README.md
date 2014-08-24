@@ -1,25 +1,42 @@
-Sahara
-======
-
-Fluent Assertions for NUnit Tests
+#Sahara
+##Fluent Assertions and Auto-Mocking for NUnit Tests
 
 Because your tests should be ridiculously easy to read and understand. 
 
+--------
+
 Sahara is an assertion library that lets you write your unit tests in a more natural language syntax.
 
-Sahara is also an auto-mocking framework that makes it easier to test and refactor legacy code by helping you isolate dependencies away from the classes you want to test
+Sahara is also an auto-mocking framework that makes it easier to test and refactor legacy code by helping you isolate dependencies away from the classes you want to test.
+
+You can find Sahara 1.3.0 on NuGet [here](https://www.nuget.org/packages/Sahara/). You can also download and add Sahara to your Visual Studio projects via Nuget.
+
+I hope you like it and that you find it makes your unit tests easier to read and write. Let me know what you think. I'm [@bm2yogi](https://www.twitter.com/bm2yogi) on Twitter.
 
 Assertions
+-------------
 
-For example instead of writing the following:
+For example, instead of writing the following:
 
+```
 Assert.IsNotNull(testResult);
 Assert.IsNotEmpty(testResult);
+```
 
 Why not:
 
-TestResult.ShouldNotBeNull().ShouldNotBeEmpty();
+```
+testResult
+    .ShouldNotBeNull()
+    .ShouldNotBeEmpty();
+```
 
 There's support for every assertion I could think of so far, and it's a work in progress, so there's always room for more.
 
-You can also download and add it to your VS test projects via Nuget.
+Auto-Mocking
+-----------------
+Writing automated unit tests for classes that are tightly coupled to dependent classes (both external and internal) can be a royal pain in the assertions.
+
+Sahara's auto-mocking feature encourages you to take advantage of constructor injection (using interface types) to declare your dependencies, so that they can be mocked and you can test (verify) your classes' behaviors in isolation, without the yak-shaving test setup that usually comes with deep inheritance chains and tightly coupled dependencies.
+
+More to come on this later...
