@@ -1,44 +1,58 @@
-using System;
 using NUnit.Framework;
+using Sahara.UnitTests.SampleClasses;
 
 namespace Sahara.UnitTests
 {
     [TestFixture]
     public class Making_Assertions
     {
-        interface IInterface1 { }
-        class BaseClass { }
-        class DerivedClass : BaseClass { }
-        class InterfaceImpl : IInterface1 { }
-        class DerivedImpl : BaseClass, IInterface1 { }
-
-        class Foo : IComparable<Foo>
-        {
-            public Foo(string value)
-            {
-                Value = value;
-            }
-
-            public string Value { get; set; }
-
-            public int CompareTo(Foo other)
-            {
-                return this.Value.CompareTo(other.Value);
-            }
-        }
-
         [Test]
-        public void Assertions_should_check_values()
+        public void Making_assertions_about_null_or_empty()
         {
-            (new object() as string).ShouldBeNull();
-            "Monkey".ShouldNotBeNull();
+            (null as object).ShouldBeNull();
+            (new object()).ShouldNotBeNull();
 
             "".ShouldBeEmpty();
+            "Monkey".ShouldNotBeNull();
             "Monkey".ShouldNotBeEmpty();
 
             new int[] { }.ShouldBeEmpty();
             new[] { 1 }.ShouldNotBeEmpty();
+        }
 
+        [Test]
+        public void Making_assertions_about_IComparable_types()
+        {
+            var apeFoo = new Foo("Ape");
+            var monkeyFoo = new Foo("Monkey");
+
+            monkeyFoo.ShouldBeGreaterThan(apeFoo);
+            monkeyFoo.ShouldBeAtLeast(apeFoo);
+            
+            apeFoo.ShouldBeLessThan(monkeyFoo);
+            apeFoo.ShouldBeAtMost(monkeyFoo);
+            
+            monkeyFoo.ShouldEqual(monkeyFoo);
+            monkeyFoo.ShouldBeAtLeast(monkeyFoo);
+            monkeyFoo.ShouldBeAtMost(monkeyFoo);
+        }
+
+        [Test, Ignore]
+        public void Failing_a_test()
+        {
+            this.ShouldFail("For some reason.");
+        }
+
+        [Test, Ignore]
+        public void Inconclusive_test()
+        {
+            // Inspired by Brad Wilson :)
+            this.ShouldBeMeh();
+        }
+
+        [Test]
+        public void Making_assertions_about_native_types()
+        {
             "Monkey".ShouldEqual("Monkey");
             "Monkey".ShouldBeAtLeast("Monkey");
             "Monkey".ShouldBeAtMost("Monkey");
@@ -50,28 +64,23 @@ namespace Sahara.UnitTests
             "MonkeyFist".ShouldEndWith("Fist");
             "MonkeyFist".ShouldContain("key");
 
-            var apeFoo = new Foo("Ape");
-            var monkeyFoo = new Foo("Monkey");
-
-            monkeyFoo.ShouldBeGreaterThan(apeFoo);
-            monkeyFoo.ShouldBeAtLeast(apeFoo);
-            apeFoo.ShouldBeLessThan(monkeyFoo);
-            apeFoo.ShouldBeAtMost(monkeyFoo);
-            monkeyFoo.ShouldEqual(monkeyFoo);
-            monkeyFoo.ShouldBeAtLeast(monkeyFoo);
-            monkeyFoo.ShouldBeAtMost(monkeyFoo);
-
             3.ShouldBeGreaterThan(2);
             3.ShouldBeAtLeast(2);
+
             2.ShouldBeLessThan(3);
             2.ShouldBeAtMost(3);
+
             3.ShouldEqual(3);
             3.ShouldBeAtLeast(3);
             3.ShouldBeAtMost(3);
 
             true.ShouldBeTrue();
             false.ShouldBeFalse();
+        }
 
+        [Test]
+        public void Making_assertions_about_collections()
+        {
             new[] { "a", "b", "c", "d" }.ShouldNotContain("e");
             new[] { "a", "b", "c", "d" }.ShouldContain("c");
             new[] { "a", "b", "c", "d", "c", "c" }.ShouldContain("c", 3);
@@ -83,7 +92,11 @@ namespace Sahara.UnitTests
 
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldContain(x => x.Value == "a");
             new[] { new Foo("a"), new Foo("b"), new Foo("c"), new Foo("d") }.ShouldNotContain(x => x.Value == "e");
+        }
 
+        [Test]
+        public void Making_assetions_about_types()
+        {
             "Monkey".ShouldBeOfType<string>();
             new DerivedClass().ShouldBeOfType<BaseClass>();
             new DerivedClass().ShouldBeOfType<DerivedClass>();

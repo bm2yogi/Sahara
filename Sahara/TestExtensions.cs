@@ -176,5 +176,17 @@ namespace Sahara
             Assert.IsInstanceOf<T>(actual);
             return actual;
         }
+
+        public static T ShouldFail<T>(this T actual, string message = "Not implemented")
+        {
+            Assert.Fail(message);
+            return actual;
+        }
+
+        public static T ShouldBeMeh<T>(this T actual)
+        {
+            Assert.Inconclusive("Meh");
+            return actual;
+        }
     }
 }
