@@ -7,6 +7,10 @@ Because your tests should be ridiculously easy to read and understand.
 
 Sahara is an assertion library that lets you write your unit tests in a more natural language syntax.
 
+Sahara is also an auto-mocking framework that makes it easier to test and refactor legacy code by helping you isolate dependencies away from the classes you want to test
+
+Assertions
+
 For example instead of writing the following:
 
 Assert.IsNotNull(testResult);
