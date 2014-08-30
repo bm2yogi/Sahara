@@ -1,20 +1,27 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
+    <id>Sahara</id>
+    <version>1.4.0</version>
     <title>Sahara</title>
-    <authors>$author$</authors>
+    <authors>Michael Ibarra</authors>
     <owners>Michael Ibarra</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <summary>
-      Because your tests should be ridiculously easy to read and understand...
+    <description>
+      Because your tests should be ridiculously easy to read, write and understand...
 
-      Sahara is an assertion library that lets you write your unit tests in a more natural language syntax.
-      Sahara is also an auto-mocking framework that makes it easier to test and refactor legacy code by helping you 
-      isolate dependencies away from the classes you want to test. 
-    </summary>
+Sahara is an assertion library and auto-mocking framework that lets you write your unit tests in a more natural language syntax and makes it easier to write unit tests for your projects by helping you isolate dependencies away from the classes you want to test.
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <summary>Fluent Unit Test Assertions and Auto-Mocking framework for .NET Projects</summary>
     <projectUrl>https://github.com/bm2yogi/Sahara</projectUrl>
+    <dependencies>
+      <dependency id="Moq" version="4.2.1408.0717" />
+      <dependency id="NUnit" version="2.6.3" />
+    </dependencies>
   </metadata>
+  <files>
+    <file src=".\bin\Release\Sahara.dll" target="lib/net40" />
+  </files>
 </package>

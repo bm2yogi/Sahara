@@ -1,15 +1,17 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sahara")]
-[assembly: AssemblyDescription("Fluent Unit Test Assertions and Auto-Mocking framework for NUnit")]
+
+[assembly: AssemblyTitle("Sahara.Mvc4")]
+[assembly: AssemblyDescription("Fluent Unit Test Assertions and Auto-Mocking framework for ASP.NET MVC4 Projects")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Michael Ibarra")]
-[assembly: AssemblyProduct("Sahara")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Sahara.Mvc4")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3a11d056-4cbf-4d15-b2d6-a248079dd382")]
+[assembly: Guid("dde6a545-d8bd-4096-b97b-7de647402175")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.4.0")]
-[assembly: AssemblyFileVersion("1.4.0")]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
