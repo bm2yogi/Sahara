@@ -9,7 +9,9 @@ Sahara is an assertion library that lets you write your unit tests in a more nat
 
 Sahara is also an auto-mocking framework that makes it easier to test and refactor legacy code by helping you isolate dependencies away from the classes you want to test.
 
-You can find Sahara 1.3.0 on NuGet [here](https://www.nuget.org/packages/Sahara/). You can also download and add Sahara to your Visual Studio projects via Nuget.
+Sahara also supports auto-mocking for ASP.NET MVC4 ([Sahara.Mvc4](https://www.nuget.org/packages/Sahara.Mvc4)) and MVC5 ([Sahara.Mvc](https://www.nuget.org/packages/Sahara.Mvc)) apps.
+
+You can find Sahara 1.5.0 on NuGet [here](https://www.nuget.org/packages/Sahara/). You can also download and add Sahara to your Visual Studio projects via Nuget.
 
 I hope you like it and that you find it makes your unit tests easier to read and write. Let me know what you think. I'm [@bm2yogi](https://www.twitter.com/bm2yogi) on Twitter.
 
