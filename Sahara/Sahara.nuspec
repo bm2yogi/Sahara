@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Sahara</id>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <title>Sahara</title>
     <authors>Michael Ibarra</authors>
     <owners>Michael Ibarra</owners>
@@ -22,6 +22,6 @@ Sahara is an assertion library and auto-mocking framework that lets you write yo
     </dependencies>
   </metadata>
   <files>
-    <file src=".\bin\Release\Sahara.dll" target="lib/net40" />
+    <file src=".\bin\Release\Sahara.dll"/>
   </files>
 </package>
