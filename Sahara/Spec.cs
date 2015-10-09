@@ -13,46 +13,14 @@ namespace Sahara
     /// <typeparam name="T">The type of the class to be created. Must be a class.</typeparam>
     public class Spec<T> where T : class
     {
-        protected readonly ConstructorInfo _biggestCtor;
-        protected readonly IList<Mock> _mockDependencies;
+        protected IDictionary<Type, Mock> MockDictionary;
 
         /// <summary>
         ///     Default constructor.
         /// </summary>
         public Spec()
         {
-            _biggestCtor = GetConstructorWithMostParameters<T>();
-            _mockDependencies = GetMockDependencies(_biggestCtor);
-        }
-
-        private static ConstructorInfo GetConstructorWithMostParameters<TI>() where TI : class
-        {
-            var constructors = typeof(TI).GetConstructors();
-
-            if (!constructors.Any())
-            {
-                return typeof(TI).GetConstructor(Type.EmptyTypes);
-            }
-
-            var maxParameterCount = constructors.Max(c => c.GetParameters().Length);
-            return constructors.First(c => c.GetParameters().Count() == maxParameterCount);
-        }
-
-        private static IList<Mock> GetMockDependencies(ConstructorInfo biggestCtor)
-        {
-            if (biggestCtor == null) return new List<Mock>();
-
-            return biggestCtor.GetParameters()
-                .Select(parameter => BuildMockObject(parameter.ParameterType))
-                .ToList();
-        }
-
-        protected static Mock BuildMockObject(Type type)
-        {
-            Type mockType = typeof(Mock<>).MakeGenericType(type);
-            ConstructorInfo mockCtor = mockType.GetConstructor(Type.EmptyTypes);
-            Mock instance = mockCtor.Invoke(new object[] { }) as Mock;
-            return instance;
+            MockDictionary = new Dictionary<Type, Mock>();
         }
 
         /// <summary>
@@ -67,7 +35,11 @@ namespace Sahara
         /// </returns>
         public virtual Mock<TI> The<TI>() where TI : class
         {
-            var mock = _mockDependencies.FirstOrDefault(md => md is Mock<TI>) as Mock<TI>;
+            var t = typeof(TI);
+            var mock = (Mock<TI>)BuildMockObject(t);
+
+            MockDictionary[t] = mock;
+
             return mock;
         }
 
@@ -79,8 +51,50 @@ namespace Sahara
         /// <returns>The target class (of type T).</returns>
         public virtual T Build()
         {
-            var sut = _biggestCtor.Invoke(_mockDependencies.Select(m => m.Object).ToArray()) as T;
-            return sut;
+            return BuildInstance(typeof(T)) as T;
+        }
+
+        private object BuildInstance(Type type)
+        {
+            if (type.IsInterface)
+            {
+                return MockDictionary.ContainsKey(type)
+                    ? MockDictionary[type].Object
+                    : BuildFromInterface(type);
+            }
+
+            ConstructorInfo[] ctors = type.GetConstructors();
+            int maxParameterCount = ctors.Max(c => c.GetParameters().Length);
+            ConstructorInfo ctor = ctors
+                .First(c => c.GetParameters().Length == maxParameterCount);
+            List<object> parameterList = new List<object>();
+
+            if (maxParameterCount == 0)
+                return ctor.Invoke(parameterList.ToArray());
+
+            parameterList = ctor.GetParameters()
+                .Select(pi => BuildInstance(pi.ParameterType)).ToList();
+
+            return ctor.Invoke(parameterList.ToArray());
+        }
+
+        protected static Mock BuildMockObject(Type type)
+        {
+            Type mockType = typeof(Mock<>).MakeGenericType(type);
+            ConstructorInfo mockCtor = mockType.GetConstructor(Type.EmptyTypes);
+            Mock mockObject = mockCtor.Invoke(new object[] { }) as Mock;
+            return mockObject;
+        }
+
+        private object BuildFromInterface(Type type)
+        {
+            Type[] types = type.Assembly.GetExportedTypes();
+            Type assemblyType = types
+                .FirstOrDefault(t => t.GetInterface(type.Name) != null);
+
+            return assemblyType == null
+                ? BuildMockObject(type).Object
+                : BuildInstance(assemblyType);
         }
 
         /// <summary>

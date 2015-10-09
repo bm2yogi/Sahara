@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -15,14 +14,12 @@ namespace Sahara.Mvc
     /// <typeparam name="T">The type of the class to be created. Must be a class.</typeparam>
     public class ControllerSpec<T> : Spec<T> where T : class
     {
-        private readonly IList<Mock> _controllerDependencies;
-
         /// <summary>
         ///     Default constructor.
         /// </summary>
         public ControllerSpec()
         {
-            _controllerDependencies = new[]
+            MockDictionary = new[]
             {
                 typeof (HttpRequestBase),
                 typeof (HttpResponseBase),
@@ -31,8 +28,7 @@ namespace Sahara.Mvc
                 typeof (RouteData),
                 typeof (IIdentity),
                 typeof (IPrincipal)
-            }
-                .Select(BuildMockObject).ToList();
+            }.ToDictionary(t => t, BuildMockObject);
         }
 
         /// <summary>
@@ -95,9 +91,13 @@ namespace Sahara.Mvc
         /// </returns>
         public override Mock<TI> The<TI>()
         {
-            IEnumerable<Mock> dependencies = _mockDependencies.Union(_controllerDependencies);
-            var mock = dependencies.FirstOrDefault(md => md is Mock<TI>) as Mock<TI>;
-            return mock;
+            var t = typeof (TI);
+            if (!MockDictionary.ContainsKey(t))
+            {
+                MockDictionary[t] = BuildMockObject(t);
+            }
+
+            return MockDictionary[t] as Mock<TI>;
         }
 
         /// <summary>

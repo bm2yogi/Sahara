@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using Sahara.UnitTests.SampleClasses;
 
@@ -103,6 +104,20 @@ namespace Sahara.UnitTests
             new InterfaceImpl().ShouldBeOfType<IInterface1>();
             new DerivedImpl().ShouldBeOfType<BaseClass>();
             new DerivedImpl().ShouldBeOfType<IInterface1>();
+        }
+
+        [Test]
+        public void Making_assertions_about_Failures()
+        {
+            try
+            {
+                this.ShouldFail();
+            }
+            catch (AssertionException ex)
+            {
+                ex.ShouldNotBeNull();
+                ex.Message.ShouldEqual("Not implemented");
+            }
         }
     }
 }

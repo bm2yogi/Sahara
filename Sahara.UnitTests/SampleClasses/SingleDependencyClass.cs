@@ -15,4 +15,19 @@ namespace Sahara.UnitTests.SampleClasses
             get { return _first.StringValue; }
         }
     }
+
+    internal class SingleConcreteDependencyClass
+    {
+        private ConcreteFirstDependency _depenency;
+
+        public SingleConcreteDependencyClass(ConcreteFirstDependency dependency)
+        {
+            _depenency = dependency;
+        }
+
+        public string Value
+        {
+            get { return _depenency.StringValue; }
+        }
+    }
 }
