@@ -1,22 +1,13 @@
-﻿using System;
-using NUnit.Framework;
-using Moq;
+﻿using NUnit.Framework;
 using Sahara.UnitTests.SampleClasses;
 
 namespace Sahara.UnitTests
 {
     [TestFixture]
-    public class Setting_Up_Test_Subjects2
+    public class Instantiating_With_Concretes_And_Optionally_Mocking
     {
         [Test]
-        public void Zero_dependency_subject()
-        {
-            var sut = new Spec<ZeroDependencyClass>().Build();
-            sut.ShouldNotBeNull();
-        }
-
-        [Test]
-        public void Multi_dependency_subject_default()
+        public void Multi_dependency_subject_with_default()
         {
             var sut = new Spec<MultiDependencyClass>().Build();
             sut.TheNumber.ShouldEqual(0);
@@ -24,7 +15,7 @@ namespace Sahara.UnitTests
         }
 
         [Test]
-        public void Multi_dependency_subject_with_mock()
+        public void Multi_dependency_subject_with_mocks()
         {
             var sut = new Spec<MultiDependencyClass>();
             sut.The<IFirstDependency>()

@@ -54,10 +54,6 @@
     <Compile Include="Setting_Up_MVC_Controllers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sahara.Mvc\Sahara.Mvc.csproj">
-      <Project>{F0499E6F-29DE-495F-8679-47C72ED339D6}</Project>
-      <Name>Sahara.Mvc</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sahara\Sahara.csproj">
       <Project>{3A5F262A-2779-42FE-9B1D-990B0AA2D4BD}</Project>
       <Name>Sahara</Name>
