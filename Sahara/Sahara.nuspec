@@ -2,11 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Sahara</id>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
         <title>Sahara</title>
         <authors>Michael Ibarra</authors>
         <owners>Michael Ibarra</owners>
         <projectUrl>https://github.com/bm2yogi/Sahara</projectUrl>
+        <iconUrl>https://s3.amazonaws.com/41336f8dda3b/Sahara/sahara.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Because your tests should be ridiculously easy to read, write and understand...
 

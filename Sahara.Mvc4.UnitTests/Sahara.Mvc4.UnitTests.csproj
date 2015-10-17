@@ -85,6 +85,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sahara.Mvc4\Sahara.Mvc4.csproj">
+      <Project>{51d47413-f5aa-4b9e-9e14-62fb76391239}</Project>
+      <Name>Sahara.Mvc4</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sahara\Sahara.csproj">
       <Project>{3a5f262a-2779-42fe-9b1d-990b0aa2d4bd}</Project>
       <Name>Sahara</Name>
