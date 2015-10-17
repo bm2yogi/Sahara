@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Sahara.Mvc4</id>
-        <version>1.2.0</version>
+        <version>1.2.1</version>
         <title>Sahara.Mvc4</title>
         <authors>Michael Ibarra</authors>
         <owners>Michael Ibarra</owners>
@@ -20,6 +20,6 @@ Sahara.Mvc4 additionally provides auto-mocking support for MVC4 controller class
         </dependencies>
     </metadata>
     <files>
-        <file src=".\bin\Release\Sahara.Mvc4.dll" target="lib\Sahara.Mvc4.dll" />
+        <file src=".\bin\Release\Sahara.Mvc4.dll" target="lib\net40\Sahara.Mvc4.dll" />
     </files>
 </package>

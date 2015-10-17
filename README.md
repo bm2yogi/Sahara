@@ -11,7 +11,7 @@ Sahara is also an auto-mocking framework that makes it easier to test and refact
 
 Sahara also supports auto-mocking for ASP.NET MVC4 ([Sahara.Mvc4](https://www.nuget.org/packages/Sahara.Mvc4)) and MVC5 ([Sahara.Mvc](https://www.nuget.org/packages/Sahara.Mvc)) apps.
 
-You can find Sahara 1.6.1 on NuGet [here](https://www.nuget.org/packages/Sahara/). You can also download and add Sahara to your Visual Studio projects via the NuGet Package Manager.
+You can find Sahara 1.6.2 on NuGet [here](https://www.nuget.org/packages/Sahara/). You can also download and add Sahara to your Visual Studio projects via the NuGet Package Manager.
 
 I hope you like it, that you find it makes your unit tests easier to read and write, and that it makes working with legacy code easier. Let me know what you think. I'm [@bm2yogi](https://www.twitter.com/bm2yogi) on Twitter.
 

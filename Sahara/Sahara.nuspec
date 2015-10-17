@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Sahara</id>
-        <version>1.6.1</version>
+        <version>1.6.2</version>
         <title>Sahara</title>
         <authors>Michael Ibarra</authors>
         <owners>Michael Ibarra</owners>
@@ -20,6 +20,6 @@ Sahara is an assertion library and auto-mocking framework that lets you write yo
         </dependencies>
     </metadata>
     <files>
-        <file src=".\bin\Release\Sahara.dll" target="lib\Sahara.dll" />
+        <file src=".\bin\Release\Sahara.dll" target="lib\net40\Sahara.dll" />
     </files>
 </package>

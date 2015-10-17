@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Sahara.Mvc</id>
-        <version>1.2.0</version>
+        <version>1.2.1</version>
         <title>Sahara.Mvc</title>
         <authors>Michael Ibarra</authors>
         <owners>Michael Ibarra</owners>
@@ -20,6 +20,6 @@ Sahara.Mvc additionally provides auto-mocking support for MVC controller classes
         </dependencies>
     </metadata>
     <files>
-        <file src=".\bin\Release\Sahara.Mvc.dll" target="lib\Sahara.Mvc.dll" />
+        <file src=".\bin\Release\Sahara.Mvc.dll" target="lib\net40\Sahara.Mvc.dll" />
     </files>
 </package>
