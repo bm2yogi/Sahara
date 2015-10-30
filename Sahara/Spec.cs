@@ -36,11 +36,13 @@ namespace Sahara
         public virtual Mock<TI> The<TI>() where TI : class
         {
             var t = typeof(TI);
-            var mock = (Mock<TI>)BuildMockObject(t);
 
-            MockDictionary[t] = mock;
+            if (!MockDictionary.ContainsKey(t))
+            {
+                MockDictionary[t] = BuildMockObject(t);
+            }
 
-            return mock;
+            return (Mock<TI>)MockDictionary[t];
         }
 
         /// <summary>
@@ -88,8 +90,7 @@ namespace Sahara
 
         private object BuildFromInterface(Type type)
         {
-            Type[] types = type.Assembly.GetExportedTypes();
-            Type assemblyType = types
+            Type assemblyType = type.Assembly.GetTypes()
                 .FirstOrDefault(t => t.GetInterface(type.Name) != null);
 
             return assemblyType == null

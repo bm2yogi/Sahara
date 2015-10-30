@@ -38,5 +38,67 @@ namespace Sahara.UnitTests
                 .TheValue.ShouldEqual("TheValue");
             sut.TheNumber.ShouldEqual(42);
         }
+
+        [Test]
+        public void Setup_multiple_mocked_operations_on_a_single_interface_dependency()
+        {
+            var spec = new Spec<AnotherClass>();
+
+            spec.The<IDependency>()
+                .Setup(x => x.FirstOperation())
+                .Returns("Foo");
+
+            spec.The<IDependency>()
+                .Setup(x => x.SecondOperation())
+                .Returns("Bar");
+
+            var sut = spec.Build();
+
+            sut.Write().ShouldEqual("FooBarFoo");
+        }
+
+        [Test]
+        public void Setup_operations_on_a_single_interface_dependency()
+        {
+            var spec = new Spec<AnotherClass>();
+
+            var sut = spec.Build();
+
+            sut.Write().ShouldEqual("MonkeyPantsMonkey");
+        }
+    }
+
+    public interface IDependency
+    {
+        string FirstOperation();
+        string SecondOperation();
+    }
+
+    class Dependency : IDependency
+    {
+        public string FirstOperation()
+        {
+            return "Monkey";
+        }
+
+        public string SecondOperation()
+        {
+            return "Pants";
+        }
+    }
+
+    public class AnotherClass
+    {
+        private readonly IDependency _dependency;
+
+        public AnotherClass(IDependency dependency)
+        {
+            _dependency = dependency;
+        }
+
+        public string Write()
+        {
+            return _dependency.FirstOperation() + _dependency.SecondOperation() + _dependency.FirstOperation();
+        }
     }
 }
