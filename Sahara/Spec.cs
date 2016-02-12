@@ -66,6 +66,11 @@ namespace Sahara
             }
 
             ConstructorInfo[] ctors = type.GetConstructors();
+            if (!ctors.Any())
+            {
+                return BuildFromInterface(type);
+            }
+
             int maxParameterCount = ctors.Max(c => c.GetParameters().Length);
             ConstructorInfo ctor = ctors
                 .First(c => c.GetParameters().Length == maxParameterCount);

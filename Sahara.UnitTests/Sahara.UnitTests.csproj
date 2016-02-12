@@ -47,6 +47,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies_With_Non_Public_Constructors.cs" />
+    <Compile Include="DependencyWithPrivateConstructor.cs" />
+    <Compile Include="DependencyWithProtectedConstructor.cs" />
     <Compile Include="Making_Assertions.cs" />
     <Compile Include="Mocking_Interface_Dependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
