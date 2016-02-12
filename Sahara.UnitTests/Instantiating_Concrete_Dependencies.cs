@@ -1,11 +1,12 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Sahara.UnitTests.SampleClasses;
 
 namespace Sahara.UnitTests
 {
     [TestFixture]
     public class Instantiating_Concrete_Dependencies
-        {
+    {
         [Test]
         public void Setup_a_class_with_a_concrete_dependency()
         {
