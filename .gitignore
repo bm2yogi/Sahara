@@ -1,11 +1,13 @@
-*.user
+.vs
+.idea
+
+[Bb]in
+[Oo]bj
 
 *.suo
+*.user
 
-bin
-
-obj
-
-_Resharper*
-*dotcover*
 *ncrunch*
+*resharper*
+*dotcover*
+
